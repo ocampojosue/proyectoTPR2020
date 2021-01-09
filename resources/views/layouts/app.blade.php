@@ -57,7 +57,7 @@
                                 <a class="dropdown-item" href="{{ route('period.index') }}">
                                     {{ __('Configs') }}
                                 </a>
-                                <a class="dropdown-item" href="{{ route('period.index') }}">
+                                <a class="dropdown-item" href="{{ route('range.index') }}">
                                     {{ __('Ranks') }}
                                 </a>
                             </div>

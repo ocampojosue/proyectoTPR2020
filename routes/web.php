@@ -23,3 +23,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('period', 'PeriodController');
 Route::patch('period', 'PeriodController@update');
+
+Route::resource('range', 'RangeController');
+Route::patch('range', 'RangeController@update');

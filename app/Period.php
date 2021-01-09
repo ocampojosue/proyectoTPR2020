@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Period extends Model
 {
-    protected $primaryKey='id';
-    protected $table = "periods";
-    public function period(){
-        return $this->belongsTo('App\Period');
+    protected $fillable = ['nombre','duracion','año','descripcion',];
+
+    public function courses(){
+    	return $this->belongsTo('App\Course');
+    }
+    public function ranges(){
+    	return $this->belongsTo('App\Range');
     }
 }
