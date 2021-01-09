@@ -49,30 +49,51 @@
                                 </li>
                             @endif
                         @else
-                        <li class="nav-item">
-                            <a class="navbar-brand" href="{{ route('period.index') }}">Period</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="navbar-brand" href="">Client</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="navbar-brand" href="">Product</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="navbar-brand" href=""> Provider</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="navbar-brand" href="">Sale</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="navbar-brand" href="">Settings </a>
-                        </li>
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ __('Period') }}
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('period.index') }}">
+                                    {{ __('Configs') }}
                                 </a>
-
-
+                                <a class="dropdown-item" href="{{ route('period.index') }}">
+                                    {{ __('Ranks') }}
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="navbar-brand" href="">Courses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="navbar-brand" href="">Students</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="navbar-brand" href=""> Lessons</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ __('Notes') }}
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('period.index') }}">
+                                    {{ __('Configs') }}
+                                </a>
+                                <a class="dropdown-item" href="{{ route('period.index') }}">
+                                    {{ __('Note Entry') }}
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="navbar-brand" href="">Users </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="navbar-brand" href="">Reports </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                  {{ Auth::user()->name }}
+                            </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
