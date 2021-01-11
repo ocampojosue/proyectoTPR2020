@@ -26,3 +26,6 @@ Route::patch('period', 'PeriodController@update');
 
 Route::resource('range', 'RangeController');
 Route::patch('range', 'RangeController@update');
+
+Route::resource('course', 'CourseController');
+Route::patch('course', 'CourseController@update');

@@ -63,7 +63,7 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="navbar-brand" href="">Courses</a>
+                            <a class="navbar-brand" href="{{ route('course.index') }}">Courses</a>
                         </li>
                         <li class="nav-item">
                             <a class="navbar-brand" href="">Students</a>

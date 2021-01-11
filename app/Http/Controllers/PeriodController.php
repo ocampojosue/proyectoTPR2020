@@ -8,6 +8,8 @@ class PeriodController extends Controller
 {
     public function index(){
         $periods=Period::paginate(5);
+        //Listar solo registros que tengan como id el 2 
+        /* $periods=Period::select('id','name','duration','year','description')->where('id','2')->get(); */
         return view('period.index',compact('periods')); 
     }
     /**
