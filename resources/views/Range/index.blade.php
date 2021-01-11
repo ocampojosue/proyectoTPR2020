@@ -5,7 +5,7 @@
   <table class="table table-light table-hover">
     <thead class="thead-light table-hover">
       <tr>
-        <th>#</th>
+        <th>##</th>
         <th>ID Range</th>
         <th>Name</th>
         <th>Duration</th>
