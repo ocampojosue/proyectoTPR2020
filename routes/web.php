@@ -29,3 +29,6 @@ Route::patch('range', 'RangeController@update');
 
 Route::resource('course', 'CourseController');
 Route::patch('course', 'CourseController@update');
+
+Route::resource('teacher', 'TeacherController');
+Route::patch('teacher', 'TeacherController@update');
