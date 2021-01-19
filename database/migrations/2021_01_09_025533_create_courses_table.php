@@ -17,7 +17,6 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->unsignedInteger('student_id');
             $table->unsignedInteger('course_id');
             $table->unsignedBigInteger('period_id');
             $table->foreign('period_id')->references('id')->on('periods')->onDelete('cascade');

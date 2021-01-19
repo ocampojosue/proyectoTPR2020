@@ -18,10 +18,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">       
             <div class="card">
-                <div class="card-header">Add New Course</div>
+                <div class="card-header">Add New Student</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('course.store')}}">
+                    <form method="POST" action="{{ route('student.store')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
@@ -30,28 +30,36 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
+                            <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Sur Name') }}</label>
                             <div class="col-md-6">
-                                <input id="" type="text" class="form-control" name="description" value="{{ old('description') }}">
+                                <input id="" type="text" class="form-control" name="surname" value="{{ old('surname') }}">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="period" class="col-md-4 col-form-label text-md-right">{{ __('Period') }}</label>
+                            <label for="sex" class="col-md-4 col-form-label text-md-right">{{ __('Sex') }}</label>
                             <div class="col-md-6">
-                                <select name="period_id" class="form-control" id="">
-                                    <option value="">--Seleccione una opción--</option>
-                                    @foreach ($periods as $period)
-                                        <option value="{{$period->id}}">{{$period->year}}</option>
-                                    @endforeach
-                                </select> 
+                                <div class="col-md-6">
+                                    <label for="male" class="col-md-10 col-form-label text-md-right">{{ __('Male') }}</label>
+                                    <input id="" type="radio"  name="sex" value="male"><br>
+                                    <label for="female" class="col-md-10 col-form-label text-md-right">{{ __('Female') }}</label>
+                                    <input id="" type="radio"  name="sex" value="female"><br>
+                                    <label for="nobinary" class="col-md-10 col-form-label text-md-right">{{ __('No Binary') }}</label>
+                                    <input id="" type="radio"  name="sex" value="nobinary"><br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('Avatar') }}</label>
+                            <div class="col-md-6">
+                                <input id="" type="file" class="form-control" name="avatar" value="{{ old('avatar') }}">
                             </div>
                         </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Save Course') }}
+                                    {{ __('Save Students') }}
                                 </button>
-                                <a href="{{route('course.index')}}" class="btn btn-danger">Back</a>
+                                <a href="{{route('student.index')}}" class="btn btn-danger">Back</a>
                             </div>
                         </div>
                     </form>

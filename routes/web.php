@@ -32,3 +32,9 @@ Route::patch('course', 'CourseController@update');
 
 Route::resource('teacher', 'TeacherController');
 Route::patch('teacher', 'TeacherController@update');
+
+Route::resource('matter', 'MatterController');
+Route::patch('matter', 'MatterController@update');
+
+Route::resource('student', 'StudentController');
+Route::patch('student', 'StudentController@update');

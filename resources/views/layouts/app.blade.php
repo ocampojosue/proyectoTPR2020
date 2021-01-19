@@ -67,7 +67,10 @@
                             <a class="navbar-brand" href="{{ route('course.index') }}">Courses</a>
                         </li>
                         <li class="nav-item">
-                            <a class="navbar-brand" href="">Students</a>
+                            <a class="navbar-brand" href="{{ route('matter.index') }}">Matters</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="navbar-brand" href="{{ route('student.index') }}">Students</a>
                         </li>
                         <li class="nav-item">
                             <a class="navbar-brand" href="{{route('teacher.index')}}"> Teacher</a>
@@ -90,8 +93,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="navbar-brand active" href="">Reports </a>
-                        </li>
-                        
+                        </li>  
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                   {{ Auth::user()->name }}
