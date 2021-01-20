@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 
 class MatterController extends Controller
 {
-    
+    //Restringir la vista de la pagina web solo a los usuarios con incio de sesion activa
+    public function __construct(){
+        $this->middleware('auth');
+    }
     public function index(){
         $matters=Matter::paginate(5);
         //Listar solo registros que tengan como id el 2 
