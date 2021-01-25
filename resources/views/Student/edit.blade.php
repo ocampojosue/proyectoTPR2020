@@ -52,7 +52,7 @@
                         <div class="form-group row">
                             <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('Avatar') }}</label>
                             <div class="col-md-6">
-                                <img  class="card-img-top mx-auto d-block" src="images/students/{{$student->avatar}}" alt="" style="width: 200px;height:200px;">
+                                <img  class="card-img-top mx-auto d-block" src="images/students/{{$student->avatar}}" alt="josue" style="width: 200px;height:200px;">
                                 <input id="" type="file" class="form-control" name="avatar" value="{{$student->avatar}}">
                             </div>
                         </div>

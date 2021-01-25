@@ -168,7 +168,7 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id){
-        Period::destroy($id);
-        return redirect('period');
+        Student::destroy($id);
+        return redirect('student');
     }
 }

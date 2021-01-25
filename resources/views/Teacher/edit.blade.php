@@ -18,34 +18,67 @@
     <div class="row justify-content-center">
         <div class="col-md-8">       
             <div class="card">
-                <div class="card-header">Add New Course</div>
+                <div class="card-header">Add New Teacher</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('course.update',$course->id) }}">
+                    <form method="POST" action="{{ route('teacher.update',$teacher->id) }}">
                         {{@csrf_field()}}
                         {{method_field('PATCH')}}
                         @csrf
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
                             <div class="col-md-6">
-                                <input id="" type="text" class="form-control" name="name" value="{{$course->name}}">
+                                <input id="" type="text" class="form-control" name="name" value="{{ $teacher->name}}">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
+                            <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Last Name') }}</label>
                             <div class="col-md-6">
-                                <input id="" type="text" class="form-control" name="description" value="{{$course->description}}">
+                                <input id="" type="text" class="form-control" name="lastname" value="{{$teacher->lastname}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
+                            <div class="col-md-6">
+                                <input id="" type="text" class="form-control" name="address" value="{{$teacher->address}}">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="year" class="col-md-4 col-form-label text-md-right">{{ __('Period') }}</label>
+                            <label for="matter" class="col-md-4 col-form-label text-md-right">{{ __('Matter') }}</label>
                             <div class="col-md-6">
-                                <select name="period_id" class="form-control" id="">
-                                    @foreach ($periods as $period)
-                                        <option value="{{$period->id}}" {{ old('period_id',$course->period_id) == $period->id ? 
-                                            'selected' : '' }}>{{$period->year}}</option>
-                                    @endforeach
-                                </select> 
+                                <input id="" type="text" class="form-control" name="matter" value="{{$teacher->matter}}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
+                            <div class="col-md-6">
+                                <input id="" type="text" class="form-control" name="city" value="{{$teacher->city}}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
+                            <div class="col-md-6">
+                                <input id="" type="text" class="form-control" name="phone" value="{{$teacher->phone}}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="sex" class="col-md-4 col-form-label text-md-right">{{ __('Sex') }}</label>
+                            <div class="col-md-6">
+                                <div class="col-md-6">
+                                    <label for="male" class="col-md-10 col-form-label text-md-right">{{ __('Male') }}</label>
+                                    <input id="" type="radio"  name="sex" value="male"><br>
+                                    <label for="female" class="col-md-10 col-form-label text-md-right">{{ __('Female') }}</label>
+                                    <input id="" type="radio"  name="sex" value="female"><br>
+                                    <label for="nobinary" class="col-md-10 col-form-label text-md-right">{{ __('No Binary') }}</label>
+                                    <input id="" type="radio"  name="sex" value="nobinary"><br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('Avatar') }}</label>
+                            <div class="col-md-6">
+                                <input id="" type="file" class="form-control" name="avatar" value="{{$teacher->avatar}}">
                             </div>
                         </div>
                         <div class="form-group row mb-0">
@@ -53,7 +86,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Save Changes') }}
                                 </button>
-                                <a href="{{route('course.index')}}" class="btn btn-danger">Back</a>
+                                <a href="{{route('teacher.index')}}" class="btn btn-danger">Back</a>
                             </div>
                         </div>
                     </form>

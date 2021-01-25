@@ -58,16 +58,27 @@
                                 <a class="dropdown-item" href="{{ route('period.index') }}">
                                     {{ __('Configs') }}
                                 </a>
-                                <a class="dropdown-item" href="{{ route('range.index') }}">
-                                    {{ __('Ranks') }}
-                                </a>
+                                
                             </div>
                         </li>
                         <li class="nav-item">
                             <a class="navbar-brand" href="{{ route('course.index') }}">Courses</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="navbar-brand" href="{{ route('matter.index') }}">Matters</a>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ __('Matters') }}
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('matter.index') }}">
+                                    {{ __('Manage Matter') }}
+                                </a>
+                                <a class="dropdown-item" href="{{ route('period.index') }}">
+                                    {{ __('Matter to Teacher') }}
+                                </a>
+                                <a class="dropdown-item" href="{{ route('range.index') }}">
+                                    {{ __('Matter to Students') }}
+                                </a>
+                            </div>
                         </li>
                         <li class="nav-item">
                             <a class="navbar-brand" href="{{ route('student.index') }}">Students</a>

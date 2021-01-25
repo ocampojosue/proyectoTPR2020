@@ -56,7 +56,7 @@ class TeacherController extends Controller
         if($request->hasFile('avatar')){
             $file = $request->file('avatar');
             $name = time().$file->getClientOriginalName();
-            $file->move(public_path().'/images/',$name);
+            $file->move(public_path().'/images/teachers',$name);
         }
         $teacher->avatar = $name;
         $teacher->save();  
@@ -137,9 +137,9 @@ class TeacherController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id){
-        $period = Period::all();
-        $period= Period::findOrFail($id);
-        return view('period.edit',compact('period'));
+        $teacher = Teacher::all();
+        $teacher= Teacher::findOrFail($id);
+        return view('teacher.edit',compact('teacher'));
     }
     /**
      * Update the specified resource in storage.
@@ -150,15 +150,26 @@ class TeacherController extends Controller
      */
     public function update(Request $request,$id){
         $validatedData = $request->validate([
-            'name'=>'required|alpha',
-            'duration'=>'required|numeric',
-            'year'=>'required|numeric',
-            'description'=>'required|alpha',
+            'name' => 'required',
+            'lastname' => 'required',
+            'address' => 'required',
+            'matter' => 'required',
+            'city' => 'required',
+            'phone' => 'required',
+            'sex' => 'required',
         ]);
-        Period::whereid($id)->update($validatedData);
-        $period = Period::all();
-        $period= Period::findOrFail($id);
-        return view('period.edit',compact('period'));
+        if($request->hasFile('avatar')){
+            $teacher= Teacher::findOrFail($id);
+            Storage::delete(['public/images/teachers',$name]);
+            $file = $request->file('avatar');
+            $name = time().$file->getClientOriginalName();
+            $file->move(public_path().'/images/teachers/',$name);
+        }
+        $teacher->avatar = $name;
+        Teacher::whereid($id)->update($validatedData);
+        $teacher = Teacher::all();
+        $teacher= Teacher::findOrFail($id);
+        return view('teacher.edit',compact('teacher'));
     }
     /**
      * Remove the specified resource from storage.
@@ -167,7 +178,7 @@ class TeacherController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id){
-        Period::destroy($id);
-        return redirect('period');
+        Teacher::destroy($id);
+        return redirect('teacher');
     }
 }

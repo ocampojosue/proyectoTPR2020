@@ -8,7 +8,7 @@
   @foreach($teachers as $teacher)
         <div class="col-sm-4" >
           <div class="card" style="width: 16rem;">
-            <img  class="card-img-top mx-auto d-block" src="images/{{$teacher->avatar}}" alt="" style="width: 200px;height:200px;">
+            <img  class="card-img-top mx-auto d-block" src="images/teachers/{{$teacher->avatar}}" alt="" style="width: 200px;height:200px;">
               <div class="card-body" style="padding: 0;margin:7px 0px">
                 <h5 class="card-title text-center">{{$teacher->name}} {{$teacher->lastname}}</h5>
                 <ul class="list-group list-group-flush">
@@ -18,9 +18,17 @@
                   <li class="list-group-item"><strong>Phone: </strong>{{$teacher->phone}}</li>
                   <li class="list-group-item"><strong>Sex: </strong>{{$teacher->sex}}</li> 
                   <li class="list-group-item">
-                    <a href="{{route ('teacher.show',$teacher->id)}}" style="" class="btn btn-primary mx-auto d-block">
-                      Show More...
+                    <a href="{{route ('teacher.edit',$teacher->id)}}" style="" class="btn btn-warning">
+                      Edit
                     </a>
+                    <a href="{{route ('teacher.edit',$teacher->id)}}" style="" class="btn btn-primary">
+                      Show
+                    </a>
+                    <form action="{{route ('teacher.destroy',$teacher->id)}}" method="post" style="display:inline">
+                      {{@csrf_field()}}
+                      {{method_field('DELETE')}}
+                      <button class="btn btn-danger" type="submit" onclick="return confirm('Confirm to Delete')">DELETE</button>
+                    </form>
                   </li> 
                 </ul>
               </div>
