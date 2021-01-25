@@ -81,6 +81,19 @@
                                 <input id="" type="file" class="form-control" name="avatar" value="{{$teacher->avatar}}">
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Matter') }}</label>
+                            <div class="col-md-6">
+                                <div class="col-md-6">
+                                    @foreach ($matters as $matter)
+                                        <label class="mr-2">
+                                            <input type="checkbox" name="matters" id="" value="{{old($matter->id)}}">
+                                            {{$matter->matter_name}}
+                                        </label>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

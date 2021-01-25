@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Teacher;
+use App\Matter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TeacherController extends Controller
 {
@@ -23,8 +25,8 @@ class TeacherController extends Controller
      */
     public function create(){
         $teachers = Teacher::all();
-        
-        return view('teacher.create', compact('teachers'));
+        $matters=Matter::all();
+        return view('teacher.create', compact('teachers','matters'));
 
     }
     /**
@@ -35,11 +37,11 @@ class TeacherController extends Controller
      */
     public function store(Request $request){
         $validateData = $request->validate([
-            'name' => 'required',
-            'lastname' => 'required',
+            'name' => 'required|regex:/^([a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/',
+            'lastname' => 'required|regex:/^([a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/',
             'address' => 'required',
-            'matter' => 'required',
-            'city' => 'required',
+            'matter' => 'required|regex:/^([a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/',
+            'city' => 'required|regex:/^([a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/',
             'phone' => 'required',
             'sex' => 'required',
             'avatar' => 'required|image'
@@ -59,7 +61,10 @@ class TeacherController extends Controller
             $file->move(public_path().'/images/teachers',$name);
         }
         $teacher->avatar = $name;
-        $teacher->save();  
+        $teacher->save(); 
+        if($request->matters){
+            $teacher->matters()->attach($request->matters);
+        } 
         return redirect('teacher'); 
         /* $teacher=request()->except('_token');
         if($request->input('radio') == 'male'){
@@ -139,7 +144,8 @@ class TeacherController extends Controller
     public function edit($id){
         $teacher = Teacher::all();
         $teacher= Teacher::findOrFail($id);
-        return view('teacher.edit',compact('teacher'));
+        $matters=Matter::all();
+        return view('teacher.edit',compact('teacher','matters'));
     }
     /**
      * Update the specified resource in storage.
@@ -150,13 +156,14 @@ class TeacherController extends Controller
      */
     public function update(Request $request,$id){
         $validatedData = $request->validate([
-            'name' => 'required',
-            'lastname' => 'required',
+            'name' => 'required|regex:/^([a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/',
+            'lastname' => 'required|regex:/^([a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/',
             'address' => 'required',
-            'matter' => 'required',
-            'city' => 'required',
+            'matter' => 'required|regex:/^([a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/',
+            'city' => 'required|regex:/^([a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/',
             'phone' => 'required',
             'sex' => 'required',
+            'avatar' => 'required|image'
         ]);
         if($request->hasFile('avatar')){
             $teacher= Teacher::findOrFail($id);

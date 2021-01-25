@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Student;
+use App\Matter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -13,6 +14,7 @@ class StudentController extends Controller
     }
     public function index(){
         $students=Student::all();
+        
         //Listar solo registros que tengan como id el 2 
         /* $periods=Period::select('id','name','duration','year','description')->where('id','2')->get(); */
         return view('student.index',compact('students')); 
@@ -24,8 +26,8 @@ class StudentController extends Controller
      */
     public function create(){
         $students = Student::all();
-        
-        return view('student.create', compact('students'));
+        $matters=Matter::all();
+        return view('student.create', compact('students','matters'));
 
     }
     /**
@@ -44,7 +46,7 @@ class StudentController extends Controller
         $student = new Student();
         $student->name = $request->name;
         $student->surname = $request->surname;
-        $student->sex = $request->sex;
+        $student->sex = $request->sex;     
         $student->avatar = $request->avatar;
         if($request->hasFile('avatar')){
             $file = $request->file('avatar');
@@ -53,6 +55,9 @@ class StudentController extends Controller
         }
         $student->avatar = $name;
         $student->save();  
+        if($request->matters){
+            $student->matters()->attach($request->matters);
+        }
         return redirect('student'); 
         /* $teacher=request()->except('_token');
         if($request->input('radio') == 'male'){

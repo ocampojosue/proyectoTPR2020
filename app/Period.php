@@ -9,9 +9,7 @@ class Period extends Model
     protected $fillable = ['nombre','duracion','año','descripcion',];
 
     public function courses(){
-    	return $this->belongsTo('App\Course');
+    	return $this->hasMany('App\Course');
     }
-    public function ranges(){
-    	return $this->belongsTo('App\Range');
-    }
+    
 }

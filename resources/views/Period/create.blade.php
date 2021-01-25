@@ -32,13 +32,13 @@
                         <div class="form-group row">
                             <label for="duration" class="col-md-4 col-form-label text-md-right">{{ __('Duration') }}</label>
                             <div class="col-md-6">
-                                <input id="duration" type="text" class="form-control" name="duration" value="{{ old('duration') }}">
+                                <input id="duration" type="number" class="form-control" name="duration" value="{{ old('duration') }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="year" class="col-md-4 col-form-label text-md-right">{{ __('Year') }}</label>
                             <div class="col-md-6">
-                                <input id="year" type="text" class="form-control" name="year" value="{{ old('year') }}">
+                                <input id="year" type="number" class="form-control" name="year" value="{{ old('year') }}">
                             </div>
                         </div>
                         <div class="form-group row">

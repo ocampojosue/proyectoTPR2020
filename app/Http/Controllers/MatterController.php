@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Matter;
-use App\Http\Controllers\DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class MatterController extends Controller
@@ -13,6 +13,7 @@ class MatterController extends Controller
     }
     public function index(){
         $matters=Matter::paginate(5);
+
         //Listar solo registros que tengan como id el 2 
         /* $periods=Period::select('id','name','duration','year','description')->where('id','2')->get(); */
         return view('matter.index',compact('matters')); 
@@ -48,7 +49,10 @@ class MatterController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id){
-        //
+        $matters = Matter::findOrFail($id);
+        $sql='select DISTINCT s.id,s.name,s.surname,s.sex from matters m,matter_student ms,students s where (2=ms.matter_id AND ms.student_id=s.id)';
+        $matters=DB::select($sql);
+        return view('matter.show',compact('matters'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -57,8 +61,7 @@ class MatterController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id){
-        $matter = Matter::all();
-        $matter = Matter::findOrFail($id);
+        $matter = Matter::find($id);
         return view('matter.edit',compact('matter'));
     }
     /**
@@ -75,7 +78,9 @@ class MatterController extends Controller
         Matter::whereid($id)->update($validatedData);
         $matter = Matter::all();
         $matter= Matter::findOrFail($id);
-        return view('matter.edit',compact('matter'));
+        return redirect()->route('matter.index',compact('matter'));
+
+        /* return view('matter.edit',compact('matter')); */
     }
     /**
      * Remove the specified resource from storage.

@@ -21,6 +21,8 @@
           <a href="{{route ('matter.edit',$matter->id)}}" class="btn btn-warning">EDIT
             {{@method_field('PUT')}}
           </a>
+          <a href="{{route ('matter.show',$matter->id)}}" class="btn btn-primary">SHOW
+          </a>
           <form action="{{route ('matter.destroy',$matter->id)}}" method="post" style="display:inline">
             {{@csrf_field()}}
             {{method_field('DELETE')}}

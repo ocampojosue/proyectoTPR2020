@@ -35,10 +35,10 @@ class PeriodController extends Controller
      */
     public function store(Request $request){
         $this->validate($request, [
-            'name'=>'required|alpha',
+            'name'=>'required|regex:/^([a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/',
             'duration'=>'required|numeric',
             'year'=>'required|numeric',
-            'description'=>'required|alpha',
+            'description'=>'required|regex:/^([a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/',
         ]);
 
         $period = new Period();
